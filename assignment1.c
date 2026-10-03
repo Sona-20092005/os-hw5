@@ -4,7 +4,7 @@
 int main() {
     int *arr;
     int n;
-    int sum;
+    int sum = 0;
 
     printf("Enter the number of elements: ");
     scanf("%d", &n);

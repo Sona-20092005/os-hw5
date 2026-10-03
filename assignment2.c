@@ -4,7 +4,7 @@
 int main() {
     int *arr;
     int n;
-    double avg;
+    double avg = 0.0;
 
     printf("Enter the number of elements: ");
     scanf("%d", &n);

@@ -61,11 +61,11 @@ int main() {
 
     printf("\n");
 
-    int *new_arr2 = (int *) my_realloc(new_arr1, initial_size * sizeof(int), new_size2 * sizeof(int));
+    int *new_arr2 = (int *) my_realloc(new_arr1, new_size1 * sizeof(int), new_size2 * sizeof(int));
     
     if (new_arr2 == NULL) {
         printf("Memory reallocation 2 failed!\n");
-        free(arr);
+        free(new_arr1);
         return 1;
     }
     
