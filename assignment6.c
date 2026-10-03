@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 void *my_realloc(void *ptr, size_t old_size, size_t new_size) {
     void *new_ptr = malloc(new_size);
 
@@ -21,11 +22,13 @@ void *my_realloc(void *ptr, size_t old_size, size_t new_size) {
     return new_ptr;
 }
 
+
 int main() {
     int *arr;
     int initial_size = 5;
-    int new_size = 3;
-    
+    int new_size1 = 10;
+    int new_size2 = 3;
+
     arr = (int *) malloc(initial_size * sizeof(int));
 
     if (arr == NULL) {
@@ -38,21 +41,43 @@ int main() {
         scanf("%d", &arr[i]);
     }
 
-    int *new_arr = (int *) my_realloc(arr, initial_size * sizeof(int), new_size * sizeof(int));
+    int *new_arr1 = (int *) my_realloc(arr, initial_size * sizeof(int), new_size1 * sizeof(int));
 
-    if (new_arr == NULL) {
-        printf("Memory reallocation failed!\n");
+    if (new_arr1 == NULL) {
+        printf("Memory reallocation 1 failed!\n");
         free(arr);
         return 1;
     }
 
-    printf("Array after resizing: ");
-    for (int i = 0; i < new_size; i++) {
-        printf("%d ", new_arr[i]);
+    printf("Enter %d more integers: ", (new_size1 - initial_size));
+    for (int i = initial_size; i < new_size1; i++) {
+        scanf("%d", &new_arr1[i]);
     }
+
+    printf("Array after resizing to 10: ");
+    for (int i = 0; i < new_size1; i++) {
+        printf("%d ", new_arr1[i]);
+    }
+
     printf("\n");
 
-    free(new_arr);
+    int *new_arr2 = (int *) my_realloc(new_arr1, initial_size * sizeof(int), new_size2 * sizeof(int));
+    
+    if (new_arr2 == NULL) {
+        printf("Memory reallocation 2 failed!\n");
+        free(arr);
+        return 1;
+    }
+    
+    printf("Array after resizing to 3: ");
+    for (int i = 0; i < new_size2; i++) {
+        printf("%d ", new_arr2[i]);
+    }
+
+    printf("\n");
+
+    free(new_arr2);
 
     return 0;
 }
+
